@@ -108,4 +108,149 @@
 
         // console.log(countChar("kakkerlak", "k"));
 
-        
+// The sum of a range       
+
+            // const range = (x,y,z) =>
+            // x > y ? [] : [x, ...range(x + 1, y)];
+
+            // console.log(range(1,4,-1)); 
+
+// let arr = [1, 3, 5, 6];
+
+// function sumArr() {
+//     const sum = arr.reduce((acc, curr) => acc + curr, 0);
+//     return sum;
+// }
+// console.log(sumArr(range(1, 10)))
+
+function range(start, end, increment) {
+    let result = [];
+    if (increment == undefined) {
+        increment = 1;
+    }
+    numLoops = Math.abs((end - start) / increment) + 1;
+    for (let i = 0; i < numLoops; i++) {
+        result.push(start);
+        start += increment;
+    }
+    return result;
+}
+
+function sum(numArray) {
+    let total = 0;
+    numLoops = numArray.length;
+    for (let i = 0; i < numLoops; i++) {
+        total += numArray[i];
+    }
+    return total;
+}
+
+// console.log(range(1, 10));
+// // → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+// console.log(range(5, 2, -1));
+// // → [5, 4, 3, 2]
+// console.log(sum(range(1, 10)));
+// → 55
+
+// Reversing an array
+
+function reverseArray() {
+    const arr = ["A", "B", "C"];
+    return arr.reverse();
+}
+// console.log(reverseArray())
+
+function reverseArrayInPlace() {
+    let newArr = [];
+    let arrayValue = [1, 2, 3, 4, 5]; 
+    while (arrayValue.length) {
+        newArr.push(arrayValue.pop())
+    }
+    return newArr;
+}
+// console.log(reverseArrayInPlace())
+
+function reverse(array) {
+    let output = [];
+    while (array.length) {
+        output.push(array.pop());
+    }
+    return output;
+}
+
+// console.log(reverse([1,2,3,4,5,6,7]));
+
+// A list
+
+function arrayToList( array ) {
+    var list = null;
+  
+    for( i = array.length-1; i >= 0; i-- )
+      list = { value: array[i], rest: list };
+  
+    return list;
+  }
+  
+  function listToArray( list ) {
+    var array = [];
+  
+    for( var node = list; node; node = node.rest )
+      array.push( node.value );
+  
+    return array;
+  }
+  
+  function prepend( value, rest ) {
+    return {value: value, rest: rest};
+  }
+  
+  function nth( list, n ) {
+    // Simpler solution
+    //
+    // return listToArray( list )[n];
+    
+    // Recursive solution
+    if( n === 0 )
+      return list.value;
+    else
+      return nth( list.rest, n - 1 );
+  }
+  
+
+// console.log(arrayToList([10, 20]));
+// // → {value: 10, rest: {value: 20, rest: null}}
+// console.log(listToArray(arrayToList([10, 20, 30])));
+// // → [10, 20, 30]
+// console.log(prepend(10, prepend(20, null)));
+// // → {value: 10, rest: {value: 20, rest: null}}
+// console.log(nth(arrayToList([10, 20, 30]), 1));
+// // → 20
+
+// Deep comparison
+
+function deepEqual(obj1, obj2) {
+    if (obj1 === obj2) {
+        return true;
+    } else if (obj1 == null || typeof obj1 != 'object' || obj2 == null || typeof obj2 != 'object') {
+        return false;
+    }
+    let propsObj1 = 0, propsObj2 = 0;
+    for ( let prop in obj1)
+    propsObj1++;
+
+    for (let prop in obj2) {
+        propsObj2++;
+
+        if (!(prop in obj1) || !deepEqual(obj1[prop], obj2[prop]))
+        return false;
+    }
+    return propsObj1 === propsObj2;
+}
+
+let obj = {here: {is: 'an'}, object: 2};
+
+console.log(deepEqual(obj, obj));
+// → true
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));

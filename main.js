@@ -337,3 +337,102 @@
 // }
 // printFarmInventory(7, 11, 3)
 
+// The lycanthrope’s log
+
+let journal = [];
+
+function addEntry(events, squirrel) {
+    journal.push([events, squirrel]);
+}
+
+addEntry(["work", "touched tree", "pizza", "running",
+          "television"], false);
+addEntry(["work", "ice cream", "cauliflower", "lasagna",
+          "touched tree", "brushed teeth"], false);
+addEntry(["weekend", "cycling", "break", "peanuts",
+          "beer"], true);
+
+
+    function tableFor(event, journal) {
+    let table = [0, 0, 0, 0];
+    for (let i = 0; i < journal.length; i++) {
+        let entry = journal[i], index = 0;
+        if (entry.events.includes(event)) index += 1;
+        if (entry.squirrel) index += 2;
+        table[index] += 1;
+    }
+    return table;
+    }
+    
+    // console.log(tableFor("pizza", journal));
+
+    // Array loops
+
+    // for (let entry of journal) {
+    //     console.log(`${entry.events.length} events.`);
+    //   }
+
+      function journalEvents(journal) {
+        let events = [];
+        for (let entry of journal) {
+            for (let event of entry.events) {
+                if (!events.includes(event)) {
+                    events.push(event);
+                }
+            }
+        }
+        return events;
+      }
+
+    //   console.log(journalEvents(journal))
+
+    let todoList = [];
+    function remember(task) {
+        todoList.push(task);
+    }
+    function getTask() {
+        return todoList.shift();
+    }
+    function rememberUrgently(task) {
+        todoList.unshift(task);
+    }
+
+    function remove(array, index) {
+        return array.slice(0, index)
+        .concat(array.slice(index + 1));
+    }
+
+    let sentance = "Secretarybirds specialize in stomping";
+    let words = sentance.split(" ");
+    // console.log(words);
+    // console.log(words.join(". "))
+
+    // Rest parameters
+
+    function max(...numbers) {
+        let result = -Infinity;
+        for (let number of numbers) {
+            if (number > result) result = number;
+        }
+        return result
+    }
+
+    let nums = [4, 5, 7];
+    // console.log(max(...nums))
+
+let wordsss = ["never", "fully"]; 
+// console.log(["will", ...wordsss, "understand"])
+
+function randomPoint(radius) {
+    let angle = Math.random() * 2 * Math.PI;
+    return {x: radius * Math.cos(angle),
+            y: radius * Math.sin(angle)};
+}
+// console.log(randomPoint(2));
+
+// Destructuring
+
+// JSON
+
+let string = JSON.stringify({squirrel: false,
+    events: ["weekend"]});
