@@ -628,7 +628,7 @@ Matrix.prototype[Symbol.iterator] = function() {
 
 let matrix = new Matrix(2, 2, (x, y) => `value ${x}, ${y}`);
 for (let {x, y, value} of matrix) {
-   console.log(x, y, value);
+//    console.log(x, y, value);
 }
 
 
@@ -640,8 +640,8 @@ let varyingSize = {
     }
 };
 
-console.log(varyingSize.size)
-console.log(varyingSize.size)
+// console.log(varyingSize.size)
+// console.log(varyingSize.size)
 
 class Temperature {
     constructor(celsius) {
@@ -660,9 +660,9 @@ class Temperature {
 }
 
 let temp = new Temperature(22);
-console.log(temp.fahrenheit);
+// console.log(temp.fahrenheit);
 temp.fahrenheit = 86;
-console.log(temp.celsius);
+// console.log(temp.celsius);
 
 // Inheritance
 // The new class inherits properties and behavior from the old class.
@@ -684,15 +684,17 @@ class SymmetricMatrix extends Matrix {
 }
 
 matrix = new SymmetricMatrix(5, (x, y) => `${x}, ${y}`);
-console.log(matrix.get(2, 3));
+// console.log(matrix.get(2, 3));
 
 // The instanceof operator
-console.log(
-    new SymmetricMatrix(2) instanceof SymmetricMatrix);
+// console.log(
+    // new SymmetricMatrix(2) instanceof SymmetricMatrix);
   // → true
-  console.log(new SymmetricMatrix(2) instanceof Matrix);
+//   console.log(new SymmetricMatrix(2) instanceof Matrix);
   // → true
-  console.log(new Matrix(2, 2) instanceof SymmetricMatrix);
+//   console.log(new Matrix(2, 2) instanceof SymmetricMatrix);
   // → false
-  console.log([1] instanceof Array);
+//   console.log([1] instanceof Array);
   // → true
+
+  
